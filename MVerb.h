@@ -57,8 +57,8 @@ public:
 		};
 
     MVerb(){
-        DampingFreq = 18000.;
-        BandwidthFreq = 18000.;
+        DampingFreq = 0.9;
+        BandwidthFreq = 0.9;
         SampleRate = 44100.;
         Decay = 0.5;
         Gain = 1.;
