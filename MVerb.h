@@ -29,17 +29,39 @@ template<typename T>
 class MVerb
 {
 private:
-    Allpass<T, 96000> allpass[4];
-    StaticAllpassFourTap<T, 96000> allpassFourTap[4];
-    StateVariable<T,4> bandwidthFilter[2];
-    StateVariable<T,4> damping[2];
-    StaticDelayLine<T, 96000> predelay;
-    StaticDelayLineFourTap<T, 96000> staticDelayLine[4];
-    StaticDelayLineEightTap<T, 96000> earlyReflectionsDelayLine[2];
-    T SampleRate, DampingFreq, Density1, Density2, BandwidthFreq, PreDelayTime, Decay, Gain, Mix, EarlyMix, Size;
-    T MixSmooth, EarlyLateSmooth, BandwidthSmooth, DampingSmooth, PredelaySmooth, SizeSmooth, DensitySmooth, DecaySmooth;
-    T PreviousLeftTank, PreviousRightTank;
-    int ControlRate, ControlRateCounter;
+    Allpass<T, 96000> allpass[4] = {};
+    StaticAllpassFourTap<T, 96000> allpassFourTap[4] = {};
+    StateVariable<T,4> bandwidthFilter[2] = {};
+    StateVariable<T,4> damping[2] = {};
+    StaticDelayLine<T, 96000> predelay = {};
+    StaticDelayLineFourTap<T, 96000> staticDelayLine[4] = {};
+    StaticDelayLineEightTap<T, 96000> earlyReflectionsDelayLine[2] = {};
+    T SampleRate = {};
+    T DampingFreq = {};
+    T Density1 = {};
+    T Density2 = {};
+    T BandwidthFreq = {};
+    T PreDelayTime = {};
+    T Decay = {};
+    T Gain = {};
+    T Mix = {};
+    T EarlyMix = {};
+    T Size = {};
+
+    T MixSmooth = {};
+    T EarlyLateSmooth = {};
+    T BandwidthSmooth = {};
+    T DampingSmooth = {};
+    T PredelaySmooth = {};
+    T SizeSmooth = {};
+    T DensitySmooth = {};
+    T DecaySmooth = {};
+
+    T PreviousLeftTank = {};
+    T PreviousRightTank = {};
+
+    int ControlRate = 0;
+    int ControlRateCounter = 0;
 
 public:
     enum
@@ -336,10 +358,10 @@ template<typename T, int maxLength>
 class Allpass
 {
 private:
-    T buffer[maxLength];
-	int index;
-	int Length;
-	T Feedback;
+    T buffer[maxLength] = {};
+    int index = 0;
+    int Length = 0;
+    T Feedback = {};
 
 public:
     Allpass()
@@ -393,10 +415,13 @@ template<typename T, int maxLength>
 class StaticAllpassFourTap
 {
 private:
-    T buffer[maxLength];
-	int index1, index2, index3, index4;
-	int Length;
-	T Feedback;
+    T buffer[maxLength] = {};
+    int index1 = 0;
+    int index2 = 0;
+    int index3 = 0;
+    int index4 = 0;
+    int Length = 0;
+    T Feedback = {};
 
 public:
     StaticAllpassFourTap()
@@ -492,10 +517,10 @@ template<typename T, int maxLength>
 class StaticDelayLine
 {
 private:
-    T buffer[maxLength];
-	int index;
-	int Length;
-	T Feedback;
+    T buffer[maxLength] = {};
+    int index = 0;
+    int Length = 0;
+    T Feedback = {};
 
 public:
     StaticDelayLine()
@@ -540,10 +565,13 @@ template<typename T, int maxLength>
 class StaticDelayLineFourTap
 {
 private:
-    T buffer[maxLength];
-	int index1, index2, index3, index4;
-	int Length;
-	T Feedback;
+    T buffer[maxLength] = {};
+    int index1 = 0;
+    int index2 = 0;
+    int index3 = 0;
+    int index4 = 0;
+    int Length = 0;
+    T Feedback = {};
 
 public:
     StaticDelayLineFourTap()
@@ -629,10 +657,17 @@ template<typename T, int maxLength>
 class StaticDelayLineEightTap
 {
 private:
-    T buffer[maxLength];
-	int index1, index2, index3, index4, index5, index6, index7, index8;
-	int Length;
-	T Feedback;
+    T buffer[maxLength] = {};
+    int index1 = 0;
+    int index2 = 0;
+    int index3 = 0;
+    int index4 = 0;
+    int index5 = 0;
+    int index6 = 0;
+    int index7 = 0;
+    int index8 = 0;
+    int Length = 0;;
+    T Feedback = {};
 
 public:
     StaticDelayLineEightTap()
@@ -754,17 +789,17 @@ template<typename T, int OverSampleCount>
 
     private:
 
-        T sampleRate;
-        T frequency;
-        T q;
-        T f;
+        T sampleRate = {};
+        T frequency = {};
+        T q = {};
+        T f = {};
 
-        T low;
-        T high;
-        T band;
-        T notch;
+        T low = {};
+        T high = {};
+        T band = {};
+        T notch = {};
 
-        T *out;
+        T *out = nullptr;
 
     public:
         StateVariable()
